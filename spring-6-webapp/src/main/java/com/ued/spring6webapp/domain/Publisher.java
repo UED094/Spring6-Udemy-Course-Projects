@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -21,8 +22,8 @@ public class Publisher {
     private String city;
     private String state;
     private String zipCode;
-//    @ManyToOne()
-//    private Set<Book> books = new HashSet<>();
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books = new HashSet<>();
 
     public Long getId() {
         return id;
