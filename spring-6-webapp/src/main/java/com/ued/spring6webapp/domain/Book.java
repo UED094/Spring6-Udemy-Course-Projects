@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -53,5 +54,28 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book book)) return false;
+
+        return Objects.equals(id, book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
+                '}';
     }
 }
